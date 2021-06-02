@@ -1,0 +1,71 @@
+img {
+  height: 80px;
+  margin: 1em 5em;
+}
+.userImg {
+  height: 10px;
+}
+.parentdiv {
+  cursor: pointer;
+  position: relative;
+
+  margin: 5em 32em;
+
+  width: 30%;
+}
+.select,
+.label {
+  color: #a728ce;
+  display: block;
+  font: 400 17px/2em "Source Sans Pro", sans-serif;
+}
+.box {
+  cursor: pointer;
+  position: relative;
+  max-width: 20em;
+  margin: 1em 0;
+
+  width: 100%;
+}
+.btn {
+  color: #a728ce;
+
+  text-align: center;
+  font-size: 20px;
+  width: 320px;
+  padding: 5px 0;
+  height: 40px;
+  margin: 1em 0;
+
+  border: 5 none;
+  background: #ececec;
+}
+.select {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  padding: 5px 0;
+  height: 40px;
+  opacity: 0;
+  background: none transparent;
+  border: 0 none;
+}
+.label-desc {
+  background: #ececec;
+  width: 80%;
+  height: 2rem;
+  font-size: 100%;
+  border: hidden;
+  text-indent: 80px;
+  text-transform: capitalize;
+}
+
+.select-box1 {
+  background: #ececec;
+}
+
+.label {
+  position: relative;
+  padding: 5px 10px;
+  cursor: pointer;
+}
