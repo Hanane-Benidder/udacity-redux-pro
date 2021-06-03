@@ -16,7 +16,7 @@ export default function questions(state = {}, action) {
     case ADD_ANSWER:
       const { answer, qid, loginUser } = action;
       const question = state[qid];
-      const voteOption = question[`${answer}`].votes;
+      const voteOption = `${answer}`.votes;
       // console.log("this", voteOption);
 
       // console.log("question", voteOption.concat([loginUser]));
@@ -24,7 +24,7 @@ export default function questions(state = {}, action) {
         ...state,
         [action.qid]: {
           ...question,
-          [voteOption]: voteOption.concat([loginUser]),
+          [voteOption]: question[voteOption].concat([loginUser]),
           // [voteOption]: question[`${answer}`].votes.concat([loginUser]),
         },
       };

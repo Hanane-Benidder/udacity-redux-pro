@@ -15,8 +15,8 @@ function flattenQuestion(question) {
     const val = question[key];
 
     if (isObject(val)) {
-      flattenedQuestion[key.text] = val.text;
-      flattenedQuestion[key.votes] = val.votes;
+      flattenedQuestion[key] = val.text;
+      flattenedQuestion[key] = val.votes;
       return flattenedQuestion;
     }
     console.log("this is", flattenedQuestion[key]);

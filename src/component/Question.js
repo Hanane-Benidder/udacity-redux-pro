@@ -3,11 +3,12 @@ import { connect } from "react-redux";
 import { handlepercentage } from "../utils/api";
 import { handleAddAnswer } from "../actions/answers";
 import "./Question.css";
+
 class Question extends Component {
   handleAnswer = (answer) => {
     const { question, loginUser } = this.props;
     this.answered = true;
-    console.log("this is answer ", answer);
+    // console.log("this is answer ", answer);
     this.props.dispatch(
       handleAddAnswer({
         loginUser,
@@ -28,9 +29,7 @@ class Question extends Component {
       (total, option) => total + question[`${option}`].votes.length,
       0
     );
-    {
-      console.log(totalVotes);
-    }
+
     return (
       <div className="root">
         <h2>Would You Rather</h2>
