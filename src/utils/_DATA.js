@@ -6,7 +6,7 @@ export let users = {
       "https://www.kindpng.com/picc/m/163-1636340_user-avatar-icon-avatar-transparent-user-icon-png.png",
     answers: {
       "8xf0y6ziyjabvozdd253nd": "optionOne",
-      "6ni6ok3ym7mf1p33lnez": "optionTwo",
+      "6ni6ok3ym7mf1p33lnez": "optionOne",
       am8ehyc8byjqgar0jgpub9: "optionTwo",
       loxhs1bqm25b708cmbf3g: "optionTwo",
     },
@@ -31,7 +31,7 @@ export let users = {
     answers: {
       xj352vofupe1dqz9emx13r: "optionOne",
       vthrdm985a262al8qx3do: "optionTwo",
-      "6ni6ok3ym7mf1p33lnez": "optionTwo",
+      "6ni6ok3ym7mf1p33lnez": "optionOne",
     },
     questions: ["6ni6ok3ym7mf1p33lnez", "xj352vofupe1dqz9emx13r"],
   },
@@ -61,7 +61,7 @@ let questions = {
     },
     optionTwo: {
       votes: ["johndoe", "sarahedo"],
-      text: "become a supervillain",
+      text: "become a supervillian",
     },
   },
   am8ehyc8byjqgar0jgpub9: {
@@ -169,12 +169,6 @@ export function _saveQuestion(question) {
 }
 
 export function _saveQuestionAnswer({ loginUser, qid, answer }) {
-  // console.log("loginUser", loginUser);
-  // console.log("users login", users[loginUser]);
-
-  // console.log("answer", answer);
-  // console.log("questions", questions[qid]);
-
   return new Promise((res, rej) => {
     setTimeout(() => {
       users = {

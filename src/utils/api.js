@@ -4,22 +4,20 @@ import {
   _saveQuestion,
   _saveQuestionAnswer,
 } from "./_DATA.js";
-export function handlepercentage(count, total) {
-  return total === 0 ? 0 : parseInt((count / total) * 100, 10);
-}
+
 export function isObject(item) {
-  return Object.prototype.toString.call(item) === "[object object] ";
+  return Object.prototype.toString.call(item) === "[object Object]";
 }
 function flattenQuestion(question) {
   return Object.keys(question).reduce((flattenedQuestion, key) => {
     const val = question[key];
 
     if (isObject(val)) {
-      flattenedQuestion[key] = val.text;
-      flattenedQuestion[key] = val.votes;
+      flattenedQuestion[key + "Text"] = val.text;
+      flattenedQuestion[key + "Votes"] = val.votes;
       return flattenedQuestion;
     }
-    console.log("this is", flattenedQuestion[key]);
+
     flattenedQuestion[key] = val;
     return flattenedQuestion;
   }, {});
@@ -47,6 +45,9 @@ function formatUsers(users) {
   }, {});
 }
 
+export function handlepercentage(count, total) {
+  return total === 0 ? 0 : parseInt((count / total) * 100, 10);
+}
 export function getInitialData() {
   return Promise.all([_getUsers(), _getQuestions()]).then(
     ([users, questions]) => ({
@@ -56,11 +57,10 @@ export function getInitialData() {
   );
 }
 
-export function saveQuestionAnswer(args) {
-  // console.log("args", args);
-  return _saveQuestionAnswer(args);
+export function saveQuestion(question) {
+  return _saveQuestion(question).then((q) => flattenQuestion(q));
 }
 
-export function saveQuestion(question) {
-  return _saveQuestion(question);
+export function saveQuestionAnswer(args) {
+  return _saveQuestionAnswer(args);
 }

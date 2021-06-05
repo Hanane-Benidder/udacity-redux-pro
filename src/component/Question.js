@@ -8,7 +8,7 @@ class Question extends Component {
   handleAnswer = (answer) => {
     const { question, loginUser } = this.props;
     this.answered = true;
-    // console.log("this is answer ", answer);
+
     this.props.dispatch(
       handleAddAnswer({
         loginUser,
@@ -20,57 +20,48 @@ class Question extends Component {
 
   render() {
     if (this.props.question === null) {
-      return <p>ERROR ,This question does not exist.</p>;
+      return <p>Errors. This question does not exist.</p>;
     }
 
-    const { question, authorAvatar, loginUser, users } = this.props;
+    const { question, vote, authorAvatar, userVote } = this.props;
 
     const totalVotes = ["optionOne", "optionTwo"].reduce(
-      (total, option) => total + question[`${option}`].votes.length,
+      (total, option) => total + question[`${option}Votes`].length,
       0
     );
 
     return (
       <div className="root">
-        <h2>Would You Rather</h2>
-        <div>
-          <img src={authorAvatar} />
+        <h1 className="question">Would You Rather</h1>
+        <div className="question-author">
+          <img src={authorAvatar} alt="Author's avatar" />
         </div>
 
         <ul>
           {["optionOne", "optionTwo"].map((option) => {
-            const voteCount = question[`${option}`].votes.length;
-            const vote = ["optionOne", "optionTwo"].reduce((vote, option) => {
-              if (vote !== null) {
-                return vote;
-              }
-              return question[`${option}`].votes.includes(loginUser)
-                ? option
-                : vote;
-            }, null);
+            const voteCount = question[`${option}Votes`].length;
 
             return (
               <li
-                className="question"
                 onClick={() => {
                   if (vote === null && !this.answered) {
                     this.handleAnswer(option);
                   }
                 }}
                 key={option}
+                className="question"
               >
-                {vote === null && !this.answered ? (
-                  <span>{question[`${option}`].text}</span>
+                {vote === null ? (
+                  question[`${option}Text`]
                 ) : (
-                  <div>
-                    <h5>{question[`${option}`].text}</h5>
-                    <h5>
+                  <div className="result">
+                    <small>{userVote}</small>
+                    <span>{question[`${option}Text`]}</span>
+                    <span>
                       {handlepercentage(voteCount, totalVotes)}% ({voteCount})
-                    </h5>
+                    </span>
                   </div>
                 )}
-                {/* {console.log(question[`${option}`].text)}*/}
-                {/* {console.log(loginUser)} */}
               </li>
             );
           })}
@@ -82,20 +73,28 @@ class Question extends Component {
 
 function mapStateToProps({ loginUser, questions, users }, { match }) {
   const { id } = match.params;
-
   const question = questions[id];
-
+  const userVote = users[loginUser].answers[question.id];
   if (!question) {
     return {
       question: null,
     };
   }
 
+  const vote = ["optionOne", "optionTwo"].reduce((vote, option) => {
+    if (vote !== null) {
+      return vote;
+    }
+
+    return question[`${option}Votes`].includes(loginUser) ? option : vote;
+  }, null);
+
   return {
     question,
-    users,
+    vote,
     loginUser,
     authorAvatar: users[question.author].avatarURL,
+    userVote,
   };
 }
 
