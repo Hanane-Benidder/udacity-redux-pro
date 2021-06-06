@@ -10,7 +10,7 @@ import Question from "./component/Question";
 import login from "./component/login";
 import dashboard from "./component/dashboard";
 import newQuestion from "./component/newQuestion";
-
+import notFound from "./component/notFound";
 import React, { Component } from "react";
 import { handleInitialData } from "./actions/shared";
 
@@ -36,6 +36,7 @@ class App extends Component {
 
                 <Route path="/questions/:id" exact component={Question}></Route>
                 <Route path="/add" exact component={newQuestion}></Route>
+                {/* <Route component={notFound} /> */}
               </Fragment>
             )}
           </Switch>

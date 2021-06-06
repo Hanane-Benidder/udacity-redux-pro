@@ -1,16 +1,31 @@
-.root {
+/* .root {
   text-align: center;
-}
+} */
+/* h1 {
+  position: absolute;
+  top: 60px;
+  left: 80px;
+} */
 
 .question {
   line-height: 50px;
   height: 50px;
   text-align: center;
-  margin: 60px;
+  margin: 90px;
   margin-right: 5em;
   margin-left: 16em;
 
-  width: 250px;
+  width: 240px;
   cursor: pointer;
   background-color: #70aac5;
+}
+.small {
+  color: aquamarine;
+  position: absolute;
+  top: 390px;
+  left: 255px;
+  font-size: 18px;
+}
+span {
+  margin-left: 0.7em;
 }

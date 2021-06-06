@@ -23,7 +23,7 @@ class Question extends Component {
       return <p>Errors. This question does not exist.</p>;
     }
 
-    const { question, vote, authorAvatar, userVote } = this.props;
+    const { question, vote, authorAvatar, loginUser } = this.props;
 
     const totalVotes = ["optionOne", "optionTwo"].reduce(
       (total, option) => total + question[`${option}Votes`].length,
@@ -32,7 +32,7 @@ class Question extends Component {
 
     return (
       <div className="root">
-        <h1 className="question">Would You Rather</h1>
+        <h1>Would You Rather</h1>
         <div className="question-author">
           <img src={authorAvatar} alt="Author's avatar" />
         </div>
@@ -54,12 +54,20 @@ class Question extends Component {
                 {vote === null ? (
                   question[`${option}Text`]
                 ) : (
-                  <div className="result">
-                    <small>{userVote}</small>
-                    <span>{question[`${option}Text`]}</span>
-                    <span>
-                      {handlepercentage(voteCount, totalVotes)}% ({voteCount})
-                    </span>
+                  <div>
+                    <div className="small">
+                      {question[`${option}Votes`].includes(loginUser) ? (
+                        <small>Your Choice</small>
+                      ) : null}
+                    </div>
+
+                    <div className="result">
+                      <span>{question[`${option}Text`]}</span>
+
+                      <span>
+                        {handlepercentage(voteCount, totalVotes)}% ({voteCount})
+                      </span>
+                    </div>
                   </div>
                 )}
               </li>
@@ -74,7 +82,9 @@ class Question extends Component {
 function mapStateToProps({ loginUser, questions, users }, { match }) {
   const { id } = match.params;
   const question = questions[id];
-  const userVote = users[loginUser].answers[question.id];
+
+  // console.log("this is 1", question);
+  // console.log("this ", question.optionOneVotes.includes(loginUser));
   if (!question) {
     return {
       question: null,
@@ -94,7 +104,6 @@ function mapStateToProps({ loginUser, questions, users }, { match }) {
     vote,
     loginUser,
     authorAvatar: users[question.author].avatarURL,
-    userVote,
   };
 }
 
