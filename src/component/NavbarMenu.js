@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation, useHistory } from "react-router-dom";
 import { connect } from "react-redux";
 import { setLoginUser } from "../actions/loginUser";
 
@@ -16,17 +16,17 @@ class NavbarMenu extends Component {
         <nav>
           <ul id="nav">
             <li className="list">
-              <NavLink to="/">
+              <NavLink to="/" exact>
                 <strong>Home</strong>
               </NavLink>
             </li>
             <li className="list">
-              <NavLink to="/add">
+              <NavLink to="/add" exact>
                 <strong>New Question</strong>
               </NavLink>
             </li>
             <li className="list">
-              <NavLink to="/leaderboard">
+              <NavLink to="/leaderboard" exact>
                 <strong>LeaderBoard</strong>
               </NavLink>
             </li>

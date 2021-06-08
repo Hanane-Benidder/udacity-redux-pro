@@ -36,7 +36,7 @@ class App extends Component {
 
                 <Route path="/questions/:id" exact component={Question}></Route>
                 <Route path="/add" exact component={newQuestion}></Route>
-                {/* <Route component={notFound} /> */}
+                <Route path="/not-found" component={notFound} />
               </Fragment>
             )}
           </Switch>

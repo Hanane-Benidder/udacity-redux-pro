@@ -44,12 +44,6 @@ class dashboard extends Component {
                 <p>
                   <strong>{`Asked by ${question.author}`}</strong>
                 </p>
-                <p>
-                  <strong>a.b</strong> {question.optionOneText}
-                </p>
-                <p>
-                  <strong>b.a</strong> {question.optionTwoText}
-                </p>
               </Link>
             </li>
           ))}

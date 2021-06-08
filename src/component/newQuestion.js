@@ -32,6 +32,7 @@ class AddQuestion extends Component {
     if (toHome === true) {
       return <Redirect to="/" />;
     }
+
     return (
       <form className="container" onSubmit={this.handleSubmit}>
         <h1>Would You Rather</h1>
