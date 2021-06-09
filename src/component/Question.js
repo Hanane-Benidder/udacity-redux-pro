@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { handlepercentage } from "../utils/api";
 import { handleAddAnswer } from "../actions/answers";
+import { Redirect } from "react-router-dom";
 import "./Question.css";
 
 class Question extends Component {
@@ -20,7 +21,7 @@ class Question extends Component {
 
   render() {
     if (this.props.question === null) {
-      return <p>Errors. This question does not exist.</p>;
+      return <Redirect to="/notFound" />;
     }
 
     const { question, vote, authorAvatar, loginUser } = this.props;
@@ -52,21 +53,24 @@ class Question extends Component {
                 className="question"
               >
                 {vote === null ? (
-                  question[`${option}Text`]
+                  <span>{question[`${option}Text`]}</span>
                 ) : (
                   <div>
-                    <div className="small">
-                      {question[`${option}Votes`].includes(loginUser) ? (
-                        <small>Your Choice</small>
-                      ) : null}
-                    </div>
-
                     <div className="result">
-                      <span>{question[`${option}Text`]}</span>
+                      <small>{question[`${option}Text`]}</small>
 
-                      <span>
+                      <small className="percentage">
                         {handlepercentage(voteCount, totalVotes)}% ({voteCount})
-                      </span>
+                      </small>
+                    </div>
+                    <div className="small">
+                      
+                      {question[`${option}Votes`].includes(loginUser) &&
+                      question[`${option}Votes`].indexOf(loginUser) !== -1 ? (
+                        <small>Your Choice</small>
+                      ) : (
+                        false
+                      )}
                     </div>
                   </div>
                 )}

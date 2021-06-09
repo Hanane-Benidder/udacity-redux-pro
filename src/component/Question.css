@@ -1,11 +1,3 @@
-/* .root {
-  text-align: center;
-} */
-/* h1 {
-  position: absolute;
-  top: 60px;
-  left: 80px;
-} */
 
 .question {
   line-height: 50px;
@@ -21,11 +13,14 @@
 }
 .small {
   color: #a728ce;
-  position: absolute;
-  top: 390px;
+  
+  top: 340px;
   left: 255px;
   font-size: 18px;
 }
-span {
+small {
   margin-left: 0.7em;
+}
+.percentage {
+  color: #a728ce;
 }
