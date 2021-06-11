@@ -19,7 +19,10 @@ class loginPage extends Component {
   handlelogin = (event) => {
     const { userId } = this.state;
     const { dispatch, loginUser } = this.props;
+
     event.preventDefault();
+
+ 
     this.setState(() => {
       this.props.dispatch(setLoginUser(this.state.userId));
     });
@@ -34,7 +37,7 @@ class loginPage extends Component {
         <h3> Welcome to Would You Rather App!</h3>
         <img src={photo} />
         <form onSubmit={this.handlelogin}>
-          {console.log("cliked user" + userId)}
+         
           <select
             className="btn"
             value={this.state.userId}

@@ -87,8 +87,7 @@ function mapStateToProps({ loginUser, questions, users }, { match }) {
   const { id } = match.params;
   const question = questions[id];
 
-  // console.log("this is 1", question);
-  // console.log("this ", question.optionOneVotes.includes(loginUser));
+  
   if (!question) {
     return {
       question: null,

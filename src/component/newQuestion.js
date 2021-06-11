@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import "./newQuestion.css";
 import { addingQuestion } from "../actions/questions";
 import { Redirect } from "react-router-dom";
+
 class AddQuestion extends Component {
   state = {
     optionOneText: "",

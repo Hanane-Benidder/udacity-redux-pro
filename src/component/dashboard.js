@@ -4,7 +4,7 @@ import Question from "./Question";
 import { connect } from "react-redux";
 import "./dashboard.css";
 
-class dashboard extends Component {
+class Dashboard extends Component {
   state = {
     selectedAnswer: false,
   };
@@ -19,7 +19,9 @@ class dashboard extends Component {
       selectedAnswer: false,
     }));
   };
+
   render() {
+    
     const { selectedAnswer } = this.state;
     const { answered, unanswered, users } = this.props;
     const pageList = selectedAnswer === true ? answered : unanswered;
@@ -71,4 +73,4 @@ function mapStateToProps({ loginUser, questions, users }) {
     users,
   };
 }
-export default connect(mapStateToProps)(dashboard);
+export default connect(mapStateToProps)(Dashboard);
