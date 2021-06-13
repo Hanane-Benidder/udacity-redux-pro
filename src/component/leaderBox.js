@@ -1,9 +1,10 @@
 import React from "react";
 import "./leaderBox.css";
-import { users } from "../utils/_DATA";
+import { connect } from "react-redux";
 
 const leaderBox = () => {
-  const userIds = Object.keys(users);
+  const {users , userIds } = this.props
+  
   const leaderboard = userIds.map((id) => ({
     id,
     points:
@@ -36,4 +37,12 @@ const leaderBox = () => {
     </div>
   );
 };
-export default leaderBox;
+
+function mapStateToProps({ users }) {
+  
+  return {
+    userIds : Object.keys(users),
+    users
+  };
+}
+export default connect(mapStateToProps)(leaderBox);

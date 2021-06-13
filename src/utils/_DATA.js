@@ -155,6 +155,7 @@ function formatQuestion({ optionOneText, optionTwoText, author }) {
 
 export function _saveQuestion(question) {
   return new Promise((res, rej) => {
+    const loginUser = question.author;
     const formattedQuestion = formatQuestion(question);
 
     setTimeout(() => {
@@ -162,7 +163,13 @@ export function _saveQuestion(question) {
         ...questions,
         [formattedQuestion.id]: formattedQuestion,
       };
-
+      users = {
+        ...users,
+        [loginUser]: {
+          ...users[loginUser],
+          questions: users[loginUser].questions.concat([formattedQuestion.id])
+        }
+      }
       res(formattedQuestion);
     }, 1000);
   });

@@ -12,7 +12,7 @@ import { handleInitialData } from "./actions/shared";
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(handleInitialData());
+    this.props.handleInitialData();
   }
   render() {
     
@@ -23,7 +23,7 @@ class App extends Component {
 
           <Switch>
             {this.props.loginUser === null ? (
-              <Route path="/" exact component={login}></Route>
+              <Route path="/" component={login}></Route>
             ) : (
               <Routes />
             )}
@@ -41,4 +41,12 @@ function mapStateToProps({ loginUser }) {
   
   };
 }
-export default connect(mapStateToProps)(App);
+
+function mapDispatchToProps(dispatch) {
+  return {
+    handleInitialData: () => {
+      dispatch(handleInitialData())
+    }
+  }
+}
+export default connect(mapStateToProps , mapDispatchToProps)(App);
