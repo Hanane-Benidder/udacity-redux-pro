@@ -15,7 +15,6 @@ class App extends Component {
     this.props.handleInitialData();
   }
   render() {
-    
     return (
       <BrowserRouter>
         <Fragment>
@@ -35,18 +34,16 @@ class App extends Component {
 }
 
 function mapStateToProps({ loginUser }) {
-  
   return {
     loginUser,
-  
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
     handleInitialData: () => {
-      dispatch(handleInitialData())
-    }
-  }
+      dispatch(handleInitialData());
+    },
+  };
 }
-export default connect(mapStateToProps , mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);

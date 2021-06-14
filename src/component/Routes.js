@@ -1,5 +1,5 @@
 import { React, Fragment } from "react";
-import { Route, Redirect } from "react-router-dom";
+import { Route, Redirect, Switch } from "react-router-dom";
 import dashboard from "./dashboard";
 import newQuestion from "./newQuestion";
 import notFound from "./notFound";
@@ -11,21 +11,26 @@ function Routes() {
     <div>
       <Fragment>
         <NavbarMenu />
+        <Switch>
+          <PrivateRoute path="/" exact component={dashboard}></PrivateRoute>
+          <PrivateRoute
+            path="/leaderboard"
+            exact
+            component={leaderBox}
+          ></PrivateRoute>
 
-        <PrivateRoute path="/" exact component={dashboard}></PrivateRoute>
-        <PrivateRoute
-          path="/leaderboard"
-          exact
-          component={leaderBox}
-        ></PrivateRoute>
-
-        <PrivateRoute
-          path="/questions/:id"
-          exact
-          component={Question}
-        ></PrivateRoute>
-        <PrivateRoute path="/add" exact component={newQuestion}></PrivateRoute>
-        <Route path="notFound" component={notFound} />
+          <PrivateRoute
+            path="/questions/:id"
+            exact
+            component={Question}
+          ></PrivateRoute>
+          <PrivateRoute
+            path="/add"
+            exact
+            component={newQuestion}
+          ></PrivateRoute>
+          <Route component={notFound} />
+        </Switch>
       </Fragment>
     </div>
   );

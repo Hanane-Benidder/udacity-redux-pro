@@ -1,0 +1,11 @@
+.notfound {
+  font-size: 40px;
+  width: 100%;
+  cursor: pointer;
+  position: relative;
+  margin: 5em 12em;
+  width:40%;
+}
+h1 a {
+    color: rgb(155, 147, 147);
+}

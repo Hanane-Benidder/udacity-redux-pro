@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./Login.css";
-import { users } from "../utils/_DATA";
 import { Redirect } from "react";
 import { setLoginUser } from "../actions/loginUser";
 import { connect } from "react-redux";
@@ -30,8 +29,8 @@ class loginPage extends Component {
 
   render() {
     const { userId, mainpage } = this.state;
+   const {users} = this.props;
     const photo = "https://clipground.com/images/redux-logo-8.jpg";
-
     return (
       <div className="parentdiv">
         <h3> Welcome to Would You Rather App!</h3>
@@ -64,8 +63,9 @@ class loginPage extends Component {
   }
 }
 function mapStateToProps({ users, loginUser }) {
+ 
   return {
-    users: Object.keys(users),
+    users,
     loginUser,
   };
 }
